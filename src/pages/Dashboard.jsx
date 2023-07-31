@@ -52,7 +52,7 @@ const Dashboard = () => {
             title="Selected Order Timestamps"
           />
         </div>
-        <List rows={mockData.results} time={timestamps}/>
+        <List rows={mockData.results} time={timestamps} cur={currency}/>
       </div>
     </div>
   );

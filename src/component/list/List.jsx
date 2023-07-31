@@ -6,7 +6,7 @@ import ListHeaderCell from "./ListHeaderCell";
 
 import styles from "./List.module.css";
 
-const List = ({ rows, time }) => {
+const List = ({ rows, time, cur }) => {
 
   function getOrderSubmittedById(id) {
     const result = time.results.find((item) => item['&id'] === id);
@@ -21,7 +21,7 @@ const List = ({ rows, time }) => {
           <ListHeaderCell>Buy/Sell</ListHeaderCell>
           <ListHeaderCell>Country</ListHeaderCell>
           <ListHeaderCell>Order Submitted</ListHeaderCell>
-          <ListHeaderCell>Order Volume / USD</ListHeaderCell>
+          <ListHeaderCell>Order Volume / {cur}</ListHeaderCell>
         </ListHeader>
       </thead>
       <tbody>
@@ -31,7 +31,7 @@ const List = ({ rows, time }) => {
             <ListRowCell>{row.executionDetails.buySellIndicator}</ListRowCell>
             <ListRowCell>{row.executionDetails.orderStatus}</ListRowCell>
             <ListRowCell>{getOrderSubmittedById(row["&id"])}</ListRowCell>
-            <ListRowCell>{row.bestExecutionData.orderVolume.USD}</ListRowCell>
+            <ListRowCell>{row.bestExecutionData.orderVolume[cur]}</ListRowCell>
           </ListRow>
         ))}
       </tbody>
