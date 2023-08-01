@@ -16,14 +16,33 @@ import Card from "../component/card/Card";
 
 const Dashboard = () => {
   const [currency, setCurrency] = useState("EUR");
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState("SE|20221104|179|9:1:NEWO");
   const [selectedOrderDetails, setSelectedOrderDetails] = useState({});
   const [selectedOrderTimeStamps, setSelectedOrderTimeStamps] = useState({});
   const [numOrders, setNumOrders] = useState(0);
+
+  const [filteredOrders, setFilteredOrders] = useState([]);
+
   useEffect(() => {
     // Calculate the number of orders
     setNumOrders(mockData.results.length);
   }, []);
+
+  // useEffect(() => {
+  //   // Filter the orders based on the search text
+  //   const filtered = mockData.results.filter((item) => item['&id'].toLowerCase() === searchText);
+  //   setFilteredOrders(filtered);
+  // }, [searchText]);
+
+  useEffect(() => {
+    // Filter the orders based on the search text
+    const filtered = mockData.results.filter((item) =>
+    item['&id'].toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredOrders(filtered);
+  }, [searchText]);
+  
+
 
   return (
     <div>
@@ -52,7 +71,7 @@ const Dashboard = () => {
             title="Selected Order Timestamps"
           />
         </div>
-        <List rows={mockData.results} time={timestamps} cur={currency}/>
+        <List rows={filteredOrders} time={timestamps} cur={currency}/>
       </div>
     </div>
   );

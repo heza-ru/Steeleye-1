@@ -14,7 +14,7 @@
 
 ~~3.  Order Volume cell is displaying USD values, can you please make it display the currency value selected on the dropdown located in the header of the dashboard~~
 
-4.  Can you please add search feature on the order IDs with the search bar given in the header
+~~4.  Can you please add search feature on the order IDs with the search bar given in the header~~
 
 5.  Please clear the console errors and warnings.
 
