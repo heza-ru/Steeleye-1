@@ -22,6 +22,7 @@ const Dashboard = () => {
   const [numOrders, setNumOrders] = useState(0);
 
   const [filteredOrders, setFilteredOrders] = useState([]);
+  const [clickedRowId, setClickedRowId] = useState("SE|20221104|179|9:1:NEWO");
 
   useEffect(() => {
     // Calculate the number of orders
@@ -41,8 +42,33 @@ const Dashboard = () => {
     );
     setFilteredOrders(filtered);
   }, [searchText]);
-  
 
+  useEffect(() => {
+    const desiredId = clickedRowId.toString();
+
+    // Find the data for the desired ID
+    const dataForId = mockData.results.find((item) => item["&id"] === desiredId);
+
+    setSelectedOrderDetails(dataForId.executionDetails);
+  }, [clickedRowId]);
+
+  useEffect(() => {
+    const desiredId = clickedRowId.toString();
+
+    // Find the data for the desired ID
+    const dataForId = timestamps.results.find((item) => item["&id"] === desiredId);
+
+    setSelectedOrderTimeStamps(dataForId.timestamps);
+  }, [clickedRowId]);
+
+  // Function to handle the clicked row
+  const handleRowClick = (id) => {
+    setClickedRowId(id);
+  };
+
+  useEffect(() => {
+    console.log("Clicked Row ID:", clickedRowId);
+  }, [clickedRowId]);
 
   return (
     <div>
@@ -71,7 +97,7 @@ const Dashboard = () => {
             title="Selected Order Timestamps"
           />
         </div>
-        <List rows={filteredOrders} time={timestamps} cur={currency}/>
+        <List rows={filteredOrders} time={timestamps} cur={currency} onRowClick={handleRowClick}/>
       </div>
     </div>
   );

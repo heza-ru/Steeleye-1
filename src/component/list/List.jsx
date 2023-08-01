@@ -6,7 +6,7 @@ import ListHeaderCell from "./ListHeaderCell";
 
 import styles from "./List.module.css";
 
-const List = ({ rows, time, cur }) => {
+const List = ({ rows, time, cur, onRowClick }) => {
 
   function getOrderSubmittedById(id) {
     const result = time.results.find((item) => item['&id'] === id);
@@ -26,7 +26,7 @@ const List = ({ rows, time, cur }) => {
       </thead>
       <tbody>
         {rows.map((row) => (
-          <ListRow>
+          <ListRow key={row["&id"]} onClick={() => onRowClick(row["&id"])}>
             <ListRowCell>{row["&id"]}</ListRowCell>
             <ListRowCell>{row.executionDetails.buySellIndicator}</ListRowCell>
             <ListRowCell>{row.executionDetails.orderStatus}</ListRowCell>
