@@ -16,7 +16,7 @@ import Card from "../component/card/Card";
 
 const Dashboard = () => {
   const [currency, setCurrency] = useState("EUR");
-  const [searchText, setSearchText] = useState("SE|20221104|179|9:1:NEWO");
+  const [searchText, setSearchText] = useState("S");
   const [selectedOrderDetails, setSelectedOrderDetails] = useState({});
   const [selectedOrderTimeStamps, setSelectedOrderTimeStamps] = useState({});
   const [numOrders, setNumOrders] = useState(0);

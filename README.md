@@ -22,8 +22,12 @@
 
 ![alt text](dashboard.JPG)
 
-## Bonus
+## Bonus (COMPLETED)
 
 - run storybook `npm run storybook`
 
-1. Please add storybook to one of the components
+~~1. Please add storybook to one of the components~~Added storybook for HeaderTitle component
+
+## Final Result
+
+![alt text](dashboardFinal.JPG)
