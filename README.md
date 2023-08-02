@@ -30,4 +30,4 @@
 
 ## Final Result
 
-![alt text](dashboardFinal.JPG)
+![alt text](dashboardFinal.jpg)
